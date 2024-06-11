@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnkiClone", "AnkiClone.csproj", "{EEBFDF36-70EB-403C-86F3-01F9CD8997CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEBFDF36-70EB-403C-86F3-01F9CD8997CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBFDF36-70EB-403C-86F3-01F9CD8997CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBFDF36-70EB-403C-86F3-01F9CD8997CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBFDF36-70EB-403C-86F3-01F9CD8997CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC90AA98-4680-4CD0-AD8E-73136482CEC7}
+	EndGlobalSection
+EndGlobal

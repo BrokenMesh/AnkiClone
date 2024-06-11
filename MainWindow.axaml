@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        x:Class="AnkiClone.MainWindow"
+	    Width="400"
+	    Height="500"
+        Title="AnkiClone">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key='Light'>
+					<SolidColorBrush x:Key='BackgroundBrush'>SpringGreen</SolidColorBrush>
+					<SolidColorBrush x:Key='ForegroundBrush'>Black</SolidColorBrush>
+				</ResourceDictionary>
+				<ResourceDictionary x:Key='Dark'>
+					<SolidColorBrush x:Key='BackgroundBrush'>DodgerBlue</SolidColorBrush>
+					<SolidColorBrush x:Key='ForegroundBrush'>White</SolidColorBrush>
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	
+	<Grid RowDefinitions="Auto, *, Auto">
+		<!-- Title bar -->
+		<Grid Grid.Row="0" Background="Orange" Height="40" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+			<Rectangle Grid.Column="0" Fill="Red" Width="38"></Rectangle>
+			<Rectangle Grid.Column="1" Fill="Blue" Width="38"></Rectangle>
+			<StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+				<Label FontWeight="Black" >Anki Clone</Label>
+			</StackPanel>
+			<Rectangle Grid.Column="3" Fill="Yellow" Width="38"></Rectangle>
+			<Rectangle Grid.Column="4" Fill="Purple" Width="38"></Rectangle>
+		</Grid>
+		<!-- Main Content -->
+		<Grid Grid.Row="1" Margin="10">
+			<Grid RowDefinitions="*,*" MaxWidth="300" MaxHeight="400">
+				<Rectangle Grid.Row="0" Fill="LightBlue"></Rectangle>
+				<Rectangle Grid.Row="1" Fill="LightPink"></Rectangle>
+			</Grid>
+		</Grid>
+		<!-- Bottom bar -->
+		<Grid Grid.Row="2" Background="Aquamarine" Height="40" ColumnDefinitions="Auto, *, Auto">
+			<Rectangle Grid.Column="0" Fill="DarkCyan" Width="38"></Rectangle>
+			<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+				<Button Background="Orange">Again</Button>
+				<Button Background="Orange">Hard</Button>
+				<Button Background="Orange">Good</Button>
+				<Button Background="Orange">Easy</Button>
+			</StackPanel>
+			<Rectangle Grid.Column="2" Fill="YellowGreen" Width="38"></Rectangle>
+		</Grid>
+	</Grid>
+</Window>
