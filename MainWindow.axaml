@@ -62,8 +62,12 @@
 			</Button>
 		</Grid>
 		<!-- Main Content -->
-		<views:CardView Grid.Row="1" IsVisible="{Binding HasCard}"/>
-		<views:HelloView Grid.Row="1" IsVisible="{Binding !HasCard}"/>
+		<Grid Grid.Row="1" IsVisible="{Binding HasCard}">
+			<views:CardView/>
+		</Grid>
+		<Grid Grid.Row="1" IsVisible="{Binding !HasCard}">
+			<views:HelloView/>
+		</Grid>
 		<!-- Bottom bar -->
 		<Grid Grid.Row="2" Background="{DynamicResource BackgroundBrush}" Height="40" ColumnDefinitions="*,Auto, Auto">
 			<StackPanel  VerticalAlignment="Center" Margin="5">

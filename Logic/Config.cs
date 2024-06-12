@@ -15,12 +15,18 @@ namespace AnkiClone.Logic
 
         public string CardStore { get; set; }
 
-        public Config(string cardStore) {
+        // The maximum card delay that will still be graded:
+        // If a card is due in for example 5 Minutes it should still be checked!
+        public int MaxCardDelayForDue_Min { get; set; }
+
+        public Config(string cardStore, int maxCardDelayForDue_Min) {
             CardStore = cardStore;
+            MaxCardDelayForDue_Min = maxCardDelayForDue_Min;
         }
 
         public Config() {
             CardStore = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AnkiClone";
+            MaxCardDelayForDue_Min = 3;
         }
 
         public static Config LoadConfig() {

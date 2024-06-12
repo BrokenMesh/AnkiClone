@@ -51,7 +51,7 @@ namespace AnkiClone.ViewModels
             int _n = 0;
 
             foreach (Card _c in Cards) {
-                if (_c.LastChecked + TimeSpan.FromDays(_c.Interval_Days) < DateTime.Now) {
+                if (_c.IsDue()) {
                     _n++;
                 }
             }
@@ -59,14 +59,53 @@ namespace AnkiClone.ViewModels
             return _n;
         }
 
-        public Card? GetDueCard() {
-            foreach (Card _c in Cards) {
-                if (_c.LastChecked + TimeSpan.FromDays(_c.Interval_Days) < DateTime.Now) {
-                    return _c;
+        public int GetEarliestCard() {
+            DateTime _lowest = DateTime.MaxValue;
+            int _id = -1;
+
+            for (int i = 0; i < Cards.Count; i++) {
+                if (Cards[i].DueAt() < _lowest) {
+                    _id = i;
+                    _lowest = Cards[i].DueAt();
                 }
             }
 
-            return null;
+            return _id;
+        }
+
+        public void GradeCard(int _cardId, int _grade) {
+            Cards[_cardId] = Grade(Cards[_cardId], _grade);
+        }
+
+        // https://en.wikipedia.org/wiki/SuperMemo
+        private Card Grade(Card _card, int _grade) {
+
+            if (_grade >= 3) { // correct response
+                if (_card.Repetitons == 0) {
+                    _card.Interval_Min = 1;
+                }
+                else if (_card.Repetitons == 1) {
+                    _card.Interval_Min = 6;
+                }
+                else {
+                    _card.Interval_Min = (int)(_card.Interval_Min * _card.Easyness);
+                }
+
+                _card.Repetitons++;
+            }
+            else { // incorrect response
+                _card.Repetitons = 0;
+                _card.Interval_Min = 1;
+            }
+
+            float _inverseGrade = 5 - _grade;
+            _card.Easyness = _card.Easyness + (0.1f - _inverseGrade * (0.08f + _inverseGrade * 0.02f));
+
+            if (_card.Easyness < 1.3f) _card.Easyness = 1.3f;
+
+            _card.LastChecked = DateTime.Now;
+
+            return _card;
         }
 
     }

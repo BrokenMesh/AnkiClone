@@ -61,9 +61,8 @@ namespace AnkiClone.ViewModels
         }
 
         private void HandleCardChange() {
-            HasCard = CardManager.Instance.Cards.Count != 0;
             NumberDueCards = CardManager.Instance.NumberOfDueCards();
-            Console.WriteLine(NumberDueCards);
+            HasCard = NumberDueCards != 0;
         }
     }
 }

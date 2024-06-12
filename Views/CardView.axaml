@@ -2,19 +2,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AnkiClone.Views.CardView">
+             xmlns:vm="clr-namespace:AnkiClone.ViewModels"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AnkiClone.Views.CardView"
+			 x:DataType="vm:CardViewModel" >
+
+	<UserControl.DataContext>
+		<vm:CardViewModel />
+	</UserControl.DataContext>
+
 	<Grid RowDefinitions="*,Auto" Margin="10">
-		<Grid Grid.Row="0" RowDefinitions="*,*" MaxWidth="300" MaxHeight="400">
-			<Rectangle Grid.Row="0" Fill="LightBlue"></Rectangle>
-			<Rectangle Grid.Row="1" Fill="LightPink"></Rectangle>
+		
+		<Grid RowDefinitions="*,*" MaxWidth="300" MaxHeight="400">
+			<Border Grid.Row="0" Background="#F5EFE2" CornerRadius="10 10 0 0" >
+				<StackPanel>
+					<Label Content="{ Binding CardFront }" Margin="30" HorizontalAlignment="Center" FontWeight="Black" Foreground="#1E1E1E"></Label>
+				</StackPanel>
+			</Border>
+			<Border Grid.Row="1" Background="#E0CCB3" CornerRadius="0 0 10 10" >
+				<StackPanel>
+					<Label Content="{ Binding CardBack }" Margin="30" HorizontalAlignment="Center" FontWeight="Black" Foreground="#181E1E"></Label>
+				</StackPanel>
+			</Border>
 		</Grid>
 		<Grid Grid.Row="1" Height="40" >
 			<StackPanel Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-				<Button>Again</Button>
-				<Button>Hard</Button>
-				<Button>Good</Button>
-				<Button>Easy</Button>
+				<Button Command="{Binding Grade}" CommandParameter="0">Again</Button>
+				<Button Command="{Binding Grade}" CommandParameter="2">Hard</Button>
+				<Button Command="{Binding Grade}" CommandParameter="3">Good</Button>
+				<Button Command="{Binding Grade}" CommandParameter="5">Easy</Button>
 			</StackPanel>
 		</Grid>
 	</Grid>
