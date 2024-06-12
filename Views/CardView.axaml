@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AnkiClone.Views.CardView">
+	<Grid RowDefinitions="*,Auto" Margin="10">
+		<Grid Grid.Row="0" RowDefinitions="*,*" MaxWidth="300" MaxHeight="400">
+			<Rectangle Grid.Row="0" Fill="LightBlue"></Rectangle>
+			<Rectangle Grid.Row="1" Fill="LightPink"></Rectangle>
+		</Grid>
+		<Grid Grid.Row="1" Height="40" >
+			<StackPanel Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+				<Button>Again</Button>
+				<Button>Hard</Button>
+				<Button>Good</Button>
+				<Button>Easy</Button>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</UserControl>

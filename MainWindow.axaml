@@ -2,54 +2,76 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" 
+		xmlns:views="clr-namespace:AnkiClone.Views"
+		xmlns:vm="clr-namespace:AnkiClone.ViewModels"
         x:Class="AnkiClone.MainWindow"
+		x:DataType="vm:MainWindowViewModel" 
+        mc:Ignorable="d" 
 	    Width="400"
 	    Height="500"
-        Title="AnkiClone">
+        Title="AnkiClone"
+		RequestedThemeVariant="Dark"
+		Background="{DynamicResource WindowBackgroundBrush}">
+	
+	<Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+		
 	<Window.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.ThemeDictionaries>
-				<ResourceDictionary x:Key='Light'>
-					<SolidColorBrush x:Key='BackgroundBrush'>SpringGreen</SolidColorBrush>
-					<SolidColorBrush x:Key='ForegroundBrush'>Black</SolidColorBrush>
-				</ResourceDictionary>
 				<ResourceDictionary x:Key='Dark'>
-					<SolidColorBrush x:Key='BackgroundBrush'>DodgerBlue</SolidColorBrush>
-					<SolidColorBrush x:Key='ForegroundBrush'>White</SolidColorBrush>
+					<SolidColorBrush x:Key='BackgroundBrush'>#212121</SolidColorBrush>
+					<SolidColorBrush x:Key='WindowBackgroundBrush'>#171717</SolidColorBrush>
+					<SolidColorBrush x:Key='ForegroundBrush'>#EEEEEE</SolidColorBrush>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
 		</ResourceDictionary>
 	</Window.Resources>
-	
+
+	<Window.Styles>
+		<Style Selector='Button.svg'>
+			<Setter Property='Background' Value='Transparent' />
+			<Setter Property='Padding' Value='1' />
+			<Setter Property='Margin' Value='3' />
+		</Style>
+		<Style Selector='Button.svg:pointerover /template/ ContentPresenter'>
+			<Setter Property='Background' Value='#0CFFFFFF' />
+		</Style>
+	</Window.Styles>
+
 	<Grid RowDefinitions="Auto, *, Auto">
 		<!-- Title bar -->
-		<Grid Grid.Row="0" Background="Orange" Height="40" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
-			<Rectangle Grid.Column="0" Fill="Red" Width="38"></Rectangle>
-			<Rectangle Grid.Column="1" Fill="Blue" Width="38"></Rectangle>
+		<Grid Grid.Row="0" Background="{DynamicResource BackgroundBrush}" Height="40" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+			<Button Grid.Column="0" Classes="svg" Width="40">
+				<Image Source="{SvgImage /Assets/Images/Icons/menu.svg}"/>
+			</Button>
+			<Button Grid.Column="1" Command="{Binding AddCard}" Classes="svg" Width="40">
+				<Image Source="{ SvgImage /Assets/Images/Icons/add.svg }"/>
+			</Button>
+			
 			<StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
 				<Label FontWeight="Black" >Anki Clone</Label>
 			</StackPanel>
-			<Rectangle Grid.Column="3" Fill="Yellow" Width="38"></Rectangle>
-			<Rectangle Grid.Column="4" Fill="Purple" Width="38"></Rectangle>
+
+			<Button Grid.Column="3" Classes="svg" Width="40">
+				<Image Source="{ SvgImage /Assets/Images/Icons/cards.svg }"/>
+			</Button>
+			<Button Grid.Column="4" Classes="svg" Width="40">
+				<Image Source="{ SvgImage /Assets/Images/Icons/settings.svg }"/>
+			</Button>
 		</Grid>
 		<!-- Main Content -->
-		<Grid Grid.Row="1" Margin="10">
-			<Grid RowDefinitions="*,*" MaxWidth="300" MaxHeight="400">
-				<Rectangle Grid.Row="0" Fill="LightBlue"></Rectangle>
-				<Rectangle Grid.Row="1" Fill="LightPink"></Rectangle>
-			</Grid>
-		</Grid>
+		<views:CardView Grid.Row="1" IsVisible="{Binding HasCard}"/>
+		<views:HelloView Grid.Row="1" IsVisible="{Binding !HasCard}"/>
 		<!-- Bottom bar -->
-		<Grid Grid.Row="2" Background="Aquamarine" Height="40" ColumnDefinitions="Auto, *, Auto">
-			<Rectangle Grid.Column="0" Fill="DarkCyan" Width="38"></Rectangle>
-			<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-				<Button Background="Orange">Again</Button>
-				<Button Background="Orange">Hard</Button>
-				<Button Background="Orange">Good</Button>
-				<Button Background="Orange">Easy</Button>
-			</StackPanel>
-			<Rectangle Grid.Column="2" Fill="YellowGreen" Width="38"></Rectangle>
+		<Grid Grid.Row="2" Background="{DynamicResource BackgroundBrush}" Height="40" ColumnDefinitions="*,Auto, Auto">
+			<Button Grid.Column="1" Classes="svg" Width="40">
+				<Image Source="{ SvgImage /Assets/Images/Icons/edit.svg }"/>
+			</Button>
+			<Button Grid.Column="2" Classes="svg" Width="40">
+				<Image Source="{ SvgImage /Assets/Images/Icons/more.svg }"/>
+			</Button>
 		</Grid>
 	</Grid>
 </Window>

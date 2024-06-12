@@ -1,3 +1,4 @@
+using AnkiClone.Logic;
 using Avalonia.Controls;
 
 namespace AnkiClone;
