@@ -62,6 +62,35 @@ namespace AnkiClone.ViewModels
             }
         }
 
+        public void ResetCurrentCard() {
+            if (CardManager.Instance.NumberOfDueCards() == 0) return;
+
+            int _id = CardManager.Instance.GetEarliestCard();
+
+            Card _c = CardManager.Instance.Cards[_id];
+            CardManager.Instance.Cards[_id] = new Card(_c.Front, _c.Back);
+        }
+
+        public void DisableCurrentCard() {
+            if (CardManager.Instance.NumberOfDueCards() == 0) return;
+
+            int _id = CardManager.Instance.GetEarliestCard();
+
+            Card _c = CardManager.Instance.Cards[_id];
+            _c.IsEnabled = false;
+            CardManager.Instance.Cards[_id] = _c;
+        }
+
+        public void DelayCurrentCard() {
+            if (CardManager.Instance.NumberOfDueCards() == 0) return;
+
+            int _id = CardManager.Instance.GetEarliestCard();
+
+            Card _c = CardManager.Instance.Cards[_id];
+            _c.LastChecked = DateTime.Now + TimeSpan.FromDays(1);
+            CardManager.Instance.Cards[_id] = _c;
+        }
+
         public async void DumpCardStore() {
             Window _window = Program.GetMainWindow()!;
             var _file = await _window.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions { 

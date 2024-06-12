@@ -13,6 +13,7 @@ namespace AnkiClone.ViewModels
         public int Repetitons { get; set; }
         public float Easyness { get; set; }
         public float Interval_Min { get; set; }
+        public bool IsEnabled { get; set; }
         public DateTime LastChecked { get; set; }
 
         public Card(string front, string back) {
@@ -22,6 +23,7 @@ namespace AnkiClone.ViewModels
             Repetitons = 0;
             Easyness = 2.5f;
             Interval_Min = 0f;
+            IsEnabled = true;
             LastChecked = DateTime.Now - TimeSpan.FromMinutes(1);
         }
 

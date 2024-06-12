@@ -63,7 +63,7 @@ namespace AnkiClone.ViewModels
             int _n = 0;
 
             foreach (Card _c in Cards) {
-                if (_c.IsDue()) {
+                if (_c.IsDue() && _c.IsEnabled) {
                     _n++;
                 }
             }
@@ -76,7 +76,7 @@ namespace AnkiClone.ViewModels
             int _id = -1;
 
             for (int i = 0; i < Cards.Count; i++) {
-                if (Cards[i].DueAt() < _lowest) {
+                if (Cards[i].DueAt() < _lowest && Cards[i].IsEnabled) {
                     _id = i;
                     _lowest = Cards[i].DueAt();
                 }
