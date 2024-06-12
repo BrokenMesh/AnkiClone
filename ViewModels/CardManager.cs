@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AnkiClone.Logic;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ namespace AnkiClone.ViewModels
 {
     public class CardManager
     {
-        public ObservableCollection<Card> Cards;
+        public BatchObservableCollection<Card> Cards;
 
         private static CardManager? _instance = null;
         public static CardManager Instance
@@ -29,17 +30,28 @@ namespace AnkiClone.ViewModels
                 throw new Exception("Cannot create two instances of the CardManager class!");
 
             _instance = this;
-            Cards = new ObservableCollection<Card>();
+            Cards = new BatchObservableCollection<Card>();
         }
 
         public void LoadCards() {
             string _file = File.ReadAllText(Program.CurrentConfig.CardStore + "/cardstore.json");
-            Cards = JsonSerializer.Deserialize<ObservableCollection<Card>>(_file)!;
+            Cards = JsonSerializer.Deserialize<BatchObservableCollection<Card>>(_file)!;
         }
 
         public void SaveCards() {
             string _file = JsonSerializer.Serialize(Cards);
             File.WriteAllText(Program.CurrentConfig.CardStore + "/cardstore.json", _file);
+        }
+
+        public void DumpCards(string _path) {
+            string _file = JsonSerializer.Serialize(Cards);
+            File.WriteAllText(_path, _file);
+        }
+
+        public void LoadCardDump(string _path) {
+            string _file = File.ReadAllText(_path);
+            Cards.Clear();
+            Cards.AddRange(JsonSerializer.Deserialize<List<Card>>(_file)!);
         }
 
         public void AddCard() {

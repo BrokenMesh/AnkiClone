@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using MsBox.Avalonia.Enums;
 using MsBox.Avalonia;
 using System.IO;
+using static System.Net.WebRequestMethods;
 
 namespace AnkiClone.ViewModels
 {
@@ -60,9 +62,71 @@ namespace AnkiClone.ViewModels
             }
         }
 
+        public async void DumpCardStore() {
+            Window _window = Program.GetMainWindow()!;
+            var _file = await _window.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions { 
+                Title = "Dump CardStore",
+                SuggestedFileName = "cardstore",
+                DefaultExtension = "json"
+            });
+            if (_file == null) return;
+
+            string? _localPath = _file.TryGetLocalPath();
+            if (_localPath == null) return;
+
+            if (!Design.IsDesignMode) {
+                try {
+                    CardManager.Instance.DumpCards(_localPath);
+                }
+                catch (Exception _e) {
+                    _ = MessageBoxManager.GetMessageBoxStandard(
+                        "Error",
+                        "Unable to dump Cards:\nError: " + _e.Message,
+                        ButtonEnum.Ok, Icon.Error
+                    ).ShowAsync();
+                }
+            }
+        }
+
+        public async void LoadCardStore() {
+            Window _window = Program.GetMainWindow()!;
+
+            var fileTypes = new List<FilePickerFileType> {
+                new FilePickerFileType("JSON Files"){
+                    Patterns = new[] { "*.json" }
+                }
+            };
+
+            var _files = await _window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions {
+                Title = "Open CardStore Dump",
+                FileTypeFilter = fileTypes,
+                AllowMultiple = false,
+            });
+
+            if (_files.Count < 1) return;
+
+            string? _localPath = _files[0].TryGetLocalPath();
+            if (_localPath == null) return;
+
+            if (!Design.IsDesignMode) {
+                try {
+                    CardManager.Instance.LoadCardDump(_localPath);
+                }
+                catch (Exception _e) {
+                    _ = MessageBoxManager.GetMessageBoxStandard(
+                        "Error",
+                        "Unable to load Cards:\nError: " + _e.Message,
+                        ButtonEnum.Ok, Icon.Error
+                    ).ShowAsync();
+                }
+            }
+        }
+
         private void HandleCardChange() {
             NumberDueCards = CardManager.Instance.NumberOfDueCards();
             HasCard = NumberDueCards != 0;
         }
+
+        
     }
 }

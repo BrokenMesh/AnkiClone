@@ -45,6 +45,15 @@
 		<Grid Grid.Row="0" Background="{DynamicResource BackgroundBrush}" Height="40" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
 			<Button Grid.Column="0" Classes="svg" Width="40">
 				<Image Source="{SvgImage /Assets/Images/Icons/menu.svg}"/>
+				<Button.Flyout >
+					<MenuFlyout>
+						<MenuItem Header="Dump CardStore" 
+								  Command="{Binding DumpCardStore}"/>
+						<MenuItem Header="-"/>
+						<MenuItem Header="Load CardStore" 
+								  Command="{Binding LoadCardStore}"/>
+					</MenuFlyout>
+				</Button.Flyout>
 			</Button>
 			<Button Grid.Column="1" Command="{Binding AddCard}" Classes="svg" Width="40">
 				<Image Source="{ SvgImage /Assets/Images/Icons/add.svg }"/>

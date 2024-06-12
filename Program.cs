@@ -1,6 +1,8 @@
 ﻿using AnkiClone.Logic;
 using AnkiClone.ViewModels;
 using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls;
 using System;
 
 namespace AnkiClone;
@@ -16,6 +18,12 @@ class Program
         CurrentConfig = Config.LoadConfig();
 
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+    }
+
+    public static Window? GetMainWindow() {
+        return Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
+            ? desktop.MainWindow
+            : null;
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.
