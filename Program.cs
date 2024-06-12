@@ -15,8 +15,6 @@ class Program
         Config.FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AnkiClone/config.json";
         CurrentConfig = Config.LoadConfig();
 
-        CardManager.Instance!.LoadCards();
-
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
     }
 

@@ -66,6 +66,9 @@
 		<views:HelloView Grid.Row="1" IsVisible="{Binding !HasCard}"/>
 		<!-- Bottom bar -->
 		<Grid Grid.Row="2" Background="{DynamicResource BackgroundBrush}" Height="40" ColumnDefinitions="*,Auto, Auto">
+			<StackPanel  VerticalAlignment="Center" Margin="5">
+				<Label Content="{Binding NumberDueCards}" Foreground="LemonChiffon"></Label>
+			</StackPanel>
 			<Button Grid.Column="1" Classes="svg" Width="40">
 				<Image Source="{ SvgImage /Assets/Images/Icons/edit.svg }"/>
 			</Button>

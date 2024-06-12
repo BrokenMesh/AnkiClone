@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AnkiClone.ViewModels
@@ -31,12 +33,41 @@ namespace AnkiClone.ViewModels
         }
 
         public void LoadCards() {
-            // TODO: Load Cards
+            string _file = File.ReadAllText(Program.CurrentConfig.CardStore + "/cardstore.json");
+            Cards = JsonSerializer.Deserialize<ObservableCollection<Card>>(_file)!;
+        }
+
+        public void SaveCards() {
+            string _file = JsonSerializer.Serialize(Cards);
+            File.WriteAllText(Program.CurrentConfig.CardStore + "/cardstore.json", _file);
         }
 
         public void AddCard() {
             Cards.Add(new Card("What is a tree Called", "tree"));
-            Console.WriteLine(Cards.Count);
+            //Console.WriteLine(Cards.Count);
         }
+
+        public int NumberOfDueCards() {
+            int _n = 0;
+
+            foreach (Card _c in Cards) {
+                if (_c.LastChecked + TimeSpan.FromDays(_c.Interval_Days) < DateTime.Now) {
+                    _n++;
+                }
+            }
+
+            return _n;
+        }
+
+        public Card? GetDueCard() {
+            foreach (Card _c in Cards) {
+                if (_c.LastChecked + TimeSpan.FromDays(_c.Interval_Days) < DateTime.Now) {
+                    return _c;
+                }
+            }
+
+            return null;
+        }
+
     }
 }
