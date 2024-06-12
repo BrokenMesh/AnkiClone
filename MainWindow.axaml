@@ -7,8 +7,8 @@
         x:Class="AnkiClone.MainWindow"
 		x:DataType="vm:MainWindowViewModel" 
         mc:Ignorable="d" 
-	    Width="400"
-	    Height="500"
+	    Width="420"
+	    Height="550"
         Title="AnkiClone"
 		RequestedThemeVariant="Dark"
 		Background="{DynamicResource WindowBackgroundBrush}">
