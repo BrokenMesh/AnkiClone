@@ -92,6 +92,10 @@ namespace AnkiClone.ViewModels
             }
         }
 
+        public void ReloadCards() {
+            CardManager.Instance.Cards.Refresh();
+        }
+
         public void ResetCurrentCard() {
             if (CardManager.Instance.NumberOfDueCards() == 0) return;
 

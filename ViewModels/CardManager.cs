@@ -33,7 +33,7 @@ namespace AnkiClone.ViewModels
             Cards = new BatchObservableCollection<Card>();
 
             if (Design.IsDesignMode) {
-                Cards.Add(new Card("1", "tree"));
+                Cards.Add(new Card("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
                 Cards.Add(new Card("2", "tree"));
                 Cards.Add(new Card("3", "tree"));
                 Cards.Add(new Card("4", "tree"));

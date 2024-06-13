@@ -5,8 +5,8 @@
         mc:Ignorable="d"
         x:Class="AnkiClone.CardOverviewDialog"
         Title="Card Overview"	
-		Width="780"
-		Height="420"
+		Width="800"
+		Height="400"
 		RequestedThemeVariant="Dark"
 		Background="{DynamicResource WindowBackgroundBrush}">
 

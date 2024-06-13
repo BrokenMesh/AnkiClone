@@ -27,9 +27,16 @@ class Program
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.
-    public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
-            .UsePlatformDetect()
-            .WithInterFont()
-            .LogToTrace();
+    public static AppBuilder BuildAvaloniaApp() {
+
+        if (Design.IsDesignMode) {
+            Config.FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AnkiClone/config.json";
+            CurrentConfig = Config.LoadConfig();
+        }
+
+        return AppBuilder.Configure<App>()
+                .UsePlatformDetect()
+                .WithInterFont()
+                .LogToTrace();
+    }
 }

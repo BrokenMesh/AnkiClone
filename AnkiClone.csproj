@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
@@ -8,12 +8,16 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\Images\Icons\reload.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <AvaloniaResource Include="Assets\Images\Icons\add.svg" />
     <AvaloniaResource Include="Assets\Images\Icons\cards.svg" />
     <AvaloniaResource Include="Assets\Images\Icons\close.svg" />
     <AvaloniaResource Include="Assets\Images\Icons\edit.svg" />
     <AvaloniaResource Include="Assets\Images\Icons\menu.svg" />
     <AvaloniaResource Include="Assets\Images\Icons\more.svg" />
+    <AvaloniaResource Include="Assets\Images\Icons\reload.svg" />
     <AvaloniaResource Include="Assets\Images\Icons\search.svg" />
     <AvaloniaResource Include="Assets\Images\Icons\settings.svg" />
   </ItemGroup>
@@ -29,10 +33,5 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="MessageBox.Avalonia" Version="3.1.5.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Assets\Images\Icons\Dark\" />
-    <Folder Include="Assets\Images\Icons\Light\" />
   </ItemGroup>
 </Project>

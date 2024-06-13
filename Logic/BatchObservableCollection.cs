@@ -24,6 +24,8 @@ namespace AnkiClone.Logic
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
+        public void Refresh() => OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e) {
             if (!_suspendNotifications) {
                 base.OnCollectionChanged(e);

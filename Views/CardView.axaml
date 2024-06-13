@@ -17,12 +17,12 @@
 		<Grid RowDefinitions="*,*" MaxWidth="300" MaxHeight="400">
 			<Border Grid.Row="0" Background="#F5EFE2" CornerRadius="10 10 0 0" >
 				<StackPanel>
-					<TextBlock Text="{ Binding CardFront }" Margin="30" TextAlignment="Center" FontWeight="Black" Foreground="#1E1E1E"></TextBlock>
+					<TextBlock Text="{ Binding CardFront }" Margin="30" TextAlignment="Center" TextWrapping="Wrap"  FontWeight="Black" Foreground="#1E1E1E"></TextBlock>
 				</StackPanel>
 			</Border>
 			<Border IsVisible="{ Binding IsShowing }" Grid.Row="1" Background="#E0CCB3" CornerRadius="0 0 10 10" >
 				<StackPanel>
-					<TextBlock Text="{ Binding CardBack }" Margin="30" TextAlignment="Center" FontWeight="Black" Foreground="#181E1E"></TextBlock>
+					<TextBlock Text="{ Binding CardBack }" Margin="30" TextAlignment="Center" TextWrapping="Wrap" FontWeight="Black" Foreground="#181E1E"></TextBlock>
 				</StackPanel>
 			</Border>
 			<Border IsVisible="{ Binding !IsShowing }" Grid.Row="1" Background="#E0CCB3" CornerRadius="0 0 10 10" >
@@ -37,9 +37,9 @@
 		</Grid>
 		<Grid Grid.Row="1" Height="40" >
 			<StackPanel IsVisible="{ Binding IsShowing }" Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-				<Button Command="{Binding Grade}" CommandParameter="0">Again</Button>
-				<Button Command="{Binding Grade}" CommandParameter="2">Hard</Button>
-				<Button Command="{Binding Grade}" CommandParameter="3">Good</Button>
+				<Button Command="{Binding Grade}" CommandParameter="1">Again</Button>
+				<Button Command="{Binding Grade}" CommandParameter="3">Hard</Button>
+				<Button Command="{Binding Grade}" CommandParameter="4">Good</Button>
 				<Button Command="{Binding Grade}" CommandParameter="5">Easy</Button>
 			</StackPanel>
 		</Grid>
