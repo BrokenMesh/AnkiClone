@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="AnkiClone.SettingsDialog"
+        Title="Settings"
+		Width="600"
+	    Height="150"
+		RequestedThemeVariant="Dark"
+		Background="{DynamicResource WindowBackgroundBrush}">
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key='Dark'>
+					<SolidColorBrush x:Key='BackgroundBrush'>#212121</SolidColorBrush>
+					<SolidColorBrush x:Key='WindowBackgroundBrush'>#171717</SolidColorBrush>
+					<SolidColorBrush x:Key='ForegroundBrush'>#EEEEEE</SolidColorBrush>
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<Grid RowDefinitions="*, Auto" Margin="10">
+		<StackPanel Spacing="10">
+			<Grid Grid.Row="0" Height="35" ColumnDefinitions="Auto, *, Auto">
+				<TextBlock Grid.Column="0" Width="150" Padding="10" FontWeight="Black"
+						   VerticalAlignment="Center" HorizontalAlignment="Stretch"
+						   TextAlignment="End">
+					Cardstore Filepath
+				</TextBlock>
+				<TextBox Grid.Column="1" x:Name="CardPathInput" />
+				<Button Grid.Column="2" x:Name="OpenCardPathButton" Margin="10 0 0 0" 
+						VerticalAlignment="Stretch" VerticalContentAlignment="Center">
+					Open
+				</Button>
+			</Grid>
+			<Grid Grid.Row="0" Height="35" ColumnDefinitions="Auto, *">
+				<TextBlock Grid.Column="0" Width="150" Padding="10" FontWeight="Black"
+						   VerticalAlignment="Center" HorizontalAlignment="Stretch"
+						   TextAlignment="End">Max Card Delay</TextBlock>
+				<NumericUpDown Grid.Column="1" x:Name="CardDelayInpit" Value="5" FormatString="0 Minutes" />
+			</Grid>
+		</StackPanel>
+		<Grid Grid.Row="1" Height="40">
+			<Button x:Name="SaveButton" HorizontalAlignment="Right" VerticalAlignment="Bottom">Save</Button>
+		</Grid>
+	</Grid>
+</Window>

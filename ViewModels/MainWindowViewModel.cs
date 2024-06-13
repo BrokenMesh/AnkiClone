@@ -11,6 +11,7 @@ using MsBox.Avalonia.Enums;
 using MsBox.Avalonia;
 using System.IO;
 using static System.Net.WebRequestMethods;
+using System.Security.Cryptography;
 
 namespace AnkiClone.ViewModels
 {
@@ -41,6 +42,16 @@ namespace AnkiClone.ViewModels
 
             CardManager.Instance.Cards.CollectionChanged += (_,_) => HandleCardChange();
             HandleCardChange();
+        }
+
+        public void Settings() {
+            Window _window = Program.GetMainWindow()!;
+            SettingsDialog.Open(_window);
+        }
+
+        public void CardOverview() {
+            Window _window = Program.GetMainWindow()!;
+            //SettingsDialog.Open(_window);
         }
 
         public async void AddCard() {
