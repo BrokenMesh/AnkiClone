@@ -65,6 +65,10 @@ namespace AnkiClone.ViewModels
             Cards.Add(_card);
         }
 
+        public void RemoveCard(int _id) {
+            Cards.RemoveAt(_id);
+        }
+
         public void EditCard(Card _card, int _id) {
             Card _c = Cards[_id];
 

@@ -5,8 +5,8 @@
         mc:Ignorable="d"
         x:Class="AnkiClone.CardOverviewDialog"
         Title="Card Overview"	
-		Width="800"
-		Height="600"
+		Width="780"
+		Height="420"
 		RequestedThemeVariant="Dark"
 		Background="{DynamicResource WindowBackgroundBrush}">
 
@@ -24,10 +24,28 @@
 
 	<Grid RowDefinitions="*, auto" Margin="10">
 		<Grid Grid.Row="0">
-			<DataGrid x:Name="Data" AutoGenerateColumns="True"/>
+			<DataGrid x:Name="Data"
+				  AutoGenerateColumns="True" IsReadOnly="True"
+				  GridLinesVisibility="All" BorderThickness="5"
+				  Background="{DynamicResource BackgroundBrush}">
+			</DataGrid>
 		</Grid>
 		<Grid Grid.Row="1" Height="50">
-			<Button HorizontalAlignment="Right" VerticalAlignment="Bottom">
+			<StackPanel x:Name="CardButtons" Orientation="Horizontal" Spacing="5">
+				<Button x:Name="EditButton" VerticalAlignment="Bottom">
+					Edit
+				</Button>
+				<Button x:Name="ToggleButton" VerticalAlignment="Bottom">
+					Toggle
+				</Button>
+				<Button x:Name="ResetButton" VerticalAlignment="Bottom">
+					Reset
+				</Button>
+				<Button x:Name="DeleteButton" VerticalAlignment="Bottom">
+					Delete
+				</Button>
+			</StackPanel>
+			<Button x:Name="CloseButton" HorizontalAlignment="Right" VerticalAlignment="Bottom">
 				Close
 			</Button>
 		</Grid>
