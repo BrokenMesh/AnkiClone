@@ -43,8 +43,27 @@ namespace AnkiClone.ViewModels
             HandleCardChange();
         }
 
-        public void AddCard() {
-            CardManager.Instance.AddCard();
+        public async void AddCard() {
+            Window _window = Program.GetMainWindow()!;
+            Card? _card = await EditCardDialog.TryCreate(_window);
+
+            if (_card == null) return;
+
+            CardManager.Instance.AddCard((Card)_card);
+
+            SaveCards();
+        }
+
+        public async void EditCard() {
+            int _id = CardManager.Instance.GetEarliestCard();
+
+            Window _window = Program.GetMainWindow()!;
+            Card? _card = await EditCardDialog.TryEdit(_window, CardManager.Instance.Cards[_id]);
+
+            if (_card == null) return;
+
+            CardManager.Instance.EditCard((Card)_card, _id);
+
             SaveCards();
         }
 

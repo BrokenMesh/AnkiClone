@@ -13,7 +13,7 @@ namespace AnkiClone.ViewModels
 {
     public partial class CardViewModel : ObservableObject
     {
-        [ObservableProperty] private string cardFront = "front";
+        [ObservableProperty] private string cardFront = "front\nnewline\nnewlinetwo";
         [ObservableProperty] private string cardBack = "back";
 
         [ObservableProperty] private bool isShowing = false;

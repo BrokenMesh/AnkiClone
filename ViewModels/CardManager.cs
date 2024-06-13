@@ -53,8 +53,17 @@ namespace AnkiClone.ViewModels
             Cards.AddRange(JsonSerializer.Deserialize<List<Card>>(_file)!);
         }
 
-        public void AddCard() {
-            Cards.Add(new Card("What is a tree Called", "tree"));
+        public void AddCard(Card _card) {
+            Cards.Add(_card);
+        }
+
+        public void EditCard(Card _card, int _id) {
+            Card _c = Cards[_id];
+
+            _c.Front = _card.Front;
+            _c.Back = _card.Back;
+
+            Cards[_id] = _c;
         }
 
         public int NumberOfDueCards() {

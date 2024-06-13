@@ -11,17 +11,18 @@
 		<vm:CardViewModel />
 	</UserControl.DataContext>
 
+
 	<Grid RowDefinitions="*,Auto" Margin="10">
 		
 		<Grid RowDefinitions="*,*" MaxWidth="300" MaxHeight="400">
 			<Border Grid.Row="0" Background="#F5EFE2" CornerRadius="10 10 0 0" >
 				<StackPanel>
-					<Label Content="{ Binding CardFront }" Margin="30" HorizontalAlignment="Center" FontWeight="Black" Foreground="#1E1E1E"></Label>
+					<TextBlock Text="{ Binding CardFront }" Margin="30" TextAlignment="Center" FontWeight="Black" Foreground="#1E1E1E"></TextBlock>
 				</StackPanel>
 			</Border>
 			<Border IsVisible="{ Binding IsShowing }" Grid.Row="1" Background="#E0CCB3" CornerRadius="0 0 10 10" >
 				<StackPanel>
-					<Label Content="{ Binding CardBack }" Margin="30" HorizontalAlignment="Center" FontWeight="Black" Foreground="#181E1E"></Label>
+					<TextBlock Text="{ Binding CardBack }" Margin="30" TextAlignment="Center" FontWeight="Black" Foreground="#181E1E"></TextBlock>
 				</StackPanel>
 			</Border>
 			<Border IsVisible="{ Binding !IsShowing }" Grid.Row="1" Background="#E0CCB3" CornerRadius="0 0 10 10" >

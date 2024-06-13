@@ -33,6 +33,5 @@
   <ItemGroup>
     <Folder Include="Assets\Images\Icons\Dark\" />
     <Folder Include="Assets\Images\Icons\Light\" />
-    <Folder Include="Dialog\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="AnkiClone.EditCardDialog"
+        Width="420"
+	    Height="350"
+        Title="AnkiClone"
+		RequestedThemeVariant="Dark"
+		Background="{DynamicResource WindowBackgroundBrush}">
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key='Dark'>
+					<SolidColorBrush x:Key='BackgroundBrush'>#212121</SolidColorBrush>
+					<SolidColorBrush x:Key='WindowBackgroundBrush'>#171717</SolidColorBrush>
+					<SolidColorBrush x:Key='ForegroundBrush'>#EEEEEE</SolidColorBrush>
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<Grid RowDefinitions="Auto, Auto, *" Margin="10">
+		<StackPanel Margin="10" Grid.Row="0">
+			<Label FontWeight="Black">Front</Label>
+			<TextBox x:Name="FrontTextBox" Height="100" AcceptsReturn="True" TextWrapping="Wrap"></TextBox>
+		</StackPanel>
+		<StackPanel  Margin="10" Grid.Row="1">
+			<Label Grid.Column="0" FontWeight="Black">Back</Label>
+			<TextBox x:Name="BackTextBox" Height="100" AcceptsReturn="True" TextWrapping="Wrap"></TextBox>
+		</StackPanel>
+		<StackPanel Margin="10" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+			<Button x:Name="SubmitButton" >Create</Button>
+		</StackPanel>
+	</Grid>
+</Window>
