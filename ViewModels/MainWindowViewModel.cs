@@ -51,7 +51,7 @@ namespace AnkiClone.ViewModels
 
         public void CardOverview() {
             Window _window = Program.GetMainWindow()!;
-            //SettingsDialog.Open(_window);
+            CardOverviewDialog.Open(_window);
         }
 
         public async void AddCard() {

@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="AnkiClone.CardOverviewDialog"
+        Title="Card Overview"	
+		Width="800"
+		Height="600"
+		RequestedThemeVariant="Dark"
+		Background="{DynamicResource WindowBackgroundBrush}">
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key='Dark'>
+					<SolidColorBrush x:Key='BackgroundBrush'>#212121</SolidColorBrush>
+					<SolidColorBrush x:Key='WindowBackgroundBrush'>#171717</SolidColorBrush>
+					<SolidColorBrush x:Key='ForegroundBrush'>#EEEEEE</SolidColorBrush>
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<Grid RowDefinitions="*, auto" Margin="10">
+		<Grid Grid.Row="0">
+			<DataGrid x:Name="Data" AutoGenerateColumns="True"/>
+		</Grid>
+		<Grid Grid.Row="1" Height="50">
+			<Button HorizontalAlignment="Right" VerticalAlignment="Bottom">
+				Close
+			</Button>
+		</Grid>
+	</Grid>
+	
+</Window>

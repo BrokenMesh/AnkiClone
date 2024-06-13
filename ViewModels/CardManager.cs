@@ -1,4 +1,5 @@
 ﻿using AnkiClone.Logic;
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,13 @@ namespace AnkiClone.ViewModels
 
             _instance = this;
             Cards = new BatchObservableCollection<Card>();
+
+            if (Design.IsDesignMode) {
+                Cards.Add(new Card("1", "tree"));
+                Cards.Add(new Card("2", "tree"));
+                Cards.Add(new Card("3", "tree"));
+                Cards.Add(new Card("4", "tree"));
+            }
         }
 
         public void LoadCards() {
