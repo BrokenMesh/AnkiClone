@@ -16,6 +16,8 @@ namespace AnkiClone.ViewModels
         [ObservableProperty] private string cardFront = "front";
         [ObservableProperty] private string cardBack = "back";
 
+        [ObservableProperty] private bool isShowing = false;
+
         private int currentCardId;
 
         public CardViewModel() {
@@ -31,8 +33,11 @@ namespace AnkiClone.ViewModels
             CardBack = CardManager.Instance.Cards[currentCardId].Back;
         }
 
+        public void Show() => IsShowing = true;
+
         public void Grade(int _grade) {
             CardManager.Instance.GradeCard(currentCardId, _grade);
+            IsShowing = false;
         }
 
     }

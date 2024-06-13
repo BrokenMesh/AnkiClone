@@ -16,8 +16,7 @@ namespace AnkiClone.ViewModels
         public BatchObservableCollection<Card> Cards;
 
         private static CardManager? _instance = null;
-        public static CardManager Instance
-        {
+        public static CardManager Instance {
             get
             {
                 return _instance ?? (_instance = new CardManager());
@@ -56,7 +55,6 @@ namespace AnkiClone.ViewModels
 
         public void AddCard() {
             Cards.Add(new Card("What is a tree Called", "tree"));
-            //Console.WriteLine(Cards.Count);
         }
 
         public int NumberOfDueCards() {
